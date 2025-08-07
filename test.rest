@@ -2,10 +2,10 @@ POST http://localhost:3002/auth/register
 Content-Type: application/json
 
 {
-    "fullName": "Jerry",
-    "email": "princewilljeremiah83@gmail.com",
+    "fullName": "Garry",
+    "email": "garry83@gmail.com",
     "password": "rajesh123",
-    "role": "admin"
+    "role": "customer"
 }
 
 ###
@@ -13,7 +13,7 @@ POST http://localhost:3002/auth/login
 Content-Type: application/json
 
 {
-    "email": "princewilljeremiah83@gmail.com",
+    "email": "garry83@gmail.com",
     "password": "rajesh123"
 }
 
