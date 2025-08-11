@@ -1,6 +1,12 @@
 const mongoose = require("mongoose");
+const paginate = require('mongoose-paginate-v2')
 
 const productSchema = new mongoose.Schema({
+    brand: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Brand',  
+        required: [true, 'Brand is required']
+    },
     productName: {
         type: String,
         required: [true, 'Product name is required'],
@@ -49,8 +55,10 @@ const productSchema = new mongoose.Schema({
 });
 
 
+
 productSchema.index({ ownerId: 1 });
 productSchema.index({ productName: 'text', description: 'text' });
+productSchema.plugin(paginate)
 
 const Product = mongoose.model("Product", productSchema);
 

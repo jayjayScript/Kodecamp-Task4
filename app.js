@@ -6,6 +6,7 @@ const { Server } = require('socket.io');
 
 const authRoutes = require("./routes/auth");
 const productRoutes = require("./routes/products");
+const brandRoutes = require("./routes/brand")
 
 mongoose.connect(process.env.MONGO_URI, {
     useNewUrlParser: true,
@@ -25,6 +26,7 @@ app.use(express.json());
 app.use('/uploads', express.static('uploads'));
 app.use('/auth', authRoutes);
 app.use('/products', productRoutes); 
+app.use('/brand', brandRoutes); 
 
 app.get('/', (req, res) => {
     res.json({

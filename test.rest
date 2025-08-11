@@ -2,10 +2,10 @@ POST http://localhost:3002/auth/register
 Content-Type: application/json
 
 {
-    "fullName": "Garry",
-    "email": "garry83@gmail.com",
-    "password": "rajesh123",
-    "role": "customer"
+    "fullName": "jerry",
+    "email": "princewilljeremiah83@gmail.com",
+    "password": "987654321",
+    "role": "admin"
 }
 
 ###
@@ -13,22 +13,24 @@ POST http://localhost:3002/auth/login
 Content-Type: application/json
 
 {
-    "email": "garry83@gmail.com",
-    "password": "rajesh123"
+    "email": "princewilljeremiah83@gmail.com",
+    "password": "987654321"
 }
 
 ###
-GET http://localhost:3002/products
+GET http://localhost:3002/products/1/10
 
 ###
 POST http://localhost:3002/products/
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODdkNDFjNTI4ZTU1YTU0OGE0YzlhMDkiLCJlbWFpbCI6InByaW5jZXdpbGxqZXJlbWlhaDgzQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc1MzAzOTM4OCwiZXhwIjoxNzUzMTI1Nzg4fQ.dJabI6VY2lj5aDk0pLYhER3FmjEMiDoxJ8JGKBKl0Y0
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODk0YTEyNGE3M2QzZDU1ZmJhNjJiZjEiLCJlbWFpbCI6InByaW5jZXdpbGxqZXJlbWlhaDgzQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc1NDU3MTEzNywiZXhwIjoxNzU0NjU3NTM3fQ.x55hxGREovWCf_YCgaoUDvQrqSFXWfZ0uHIW3kiLFQY
 
 {
-    "productName": "Hair pin",
-    "cost": 1000,
+    "productName": "chinese pin",
+    "cost": 3000,
     "productImages": ["https://res.cloudinary.com/dyrleuyj9/image/upload/v1753040910/images_npyu1w.jpg"],
     "description": "This is a product description"
 }
+
+
 
