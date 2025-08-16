@@ -55,7 +55,7 @@ router.post('/', authMiddleware, adminOnly, async (req, res) => {
 
 })
 
-router.put('/:id', authMiddleware, adminOnly, async (req, res) => {
+router.patch('/:id', authMiddleware, adminOnly, async (req, res) => {
     try {
         const { id } = req.params;
         const { brandName } = req.body;
@@ -66,7 +66,15 @@ router.put('/:id', authMiddleware, adminOnly, async (req, res) => {
             })
         }
 
-        const updatedBrand = await Brand.findByIdAndUpdate(id, { brandName });
+        const updatedBrand = await Brand.findByIdAndUpdate(id, { brandName },{ new: true });
+
+        if (!updatedBrand) {
+            return res.status(404).json({
+                success: false,
+                message: 'Brand not found'
+            });
+        }
+        
         res.status(200).json({
             success: true,
             message: 'Brand updated',

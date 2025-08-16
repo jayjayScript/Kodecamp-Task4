@@ -5,7 +5,7 @@ const authMiddleware = async (req, res, next) => {
     try {
         // Get token from header
         const authHeader = req.headers.authorization;
-        
+
         if (!authHeader || !authHeader.startsWith('Bearer ')) {
             return res.status(401).json({
                 success: false,
@@ -19,7 +19,7 @@ const authMiddleware = async (req, res, next) => {
         try {
             // Verify JWT token
             const decoded = jwt.verify(token, process.env.JWT_SECRET);
-            
+
             const user = await User.findById(decoded.userId);
             if (!user) {
                 return res.status(401).json({
@@ -62,4 +62,14 @@ const adminOnly = (req, res, next) => {
     }
     next()
 }
-module.exports = { authMiddleware, adminOnly };
+
+const authorize = (req, res, next) => {
+    if (req.user.role !== 'customer') {
+        return res.status(403).json({
+            success: false,
+            message: 'Access denied. only users can make orders.'
+        });
+    }
+    next();
+}
+module.exports = { authMiddleware, adminOnly, authorize };
